@@ -17,14 +17,19 @@ function App() {
     }, []);
 
     return (
-        <main className="flex min-h-screen items-center justify-center bg-gradient-to-br from-[#1E1E2E] to-[#2A2A3A]">
-            <div className="p-10 bg-[#25252F] rounded-lg shadow-lg shadow-[#44475A]/50 text-center">
-                <h1 className="text-[#F8F8F2] text-6xl font-serif tracking-wide hover:text-[#44475A] transition duration-300 ease-in-out">
-                    Text Editor
+        <main className="flex min-h-screen items-center justify-center  bg-[#212121] ">
+            <div className="p-10 bg-[#0d0d0d] rounded-lg shadow-xl shadow-[#44475A]/50 text-center">
+                <h1 className="text-[#F8F8F2] text-4xl md:text-6xl font-serif tracking-wide hover:text-[#44475A] hover:scale-105 transition duration-300 ease-in-out bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-transparent bg-clip-text shadow-lg">
+                    Text editor
                 </h1>
-                <p className="mt-4 text-[#A6ACB9] text-lg">
+
+                <p className="mt-4 text-[#cbced6] text-lg">
                     A sleek, modern, and functional dark-themed editor.
                 </p>
+                <p className="mt-1 block text-[#A6ACB9] text-sm">
+                    Collaborate with your friends and family in realtime.
+                </p>
+
                 <DocumentForm />
                 <hr className="mt-8 border-t border-[#44475A]" />
                 <DataTable data={data} />

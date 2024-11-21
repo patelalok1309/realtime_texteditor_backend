@@ -45,7 +45,7 @@ function DocumentForm() {
                 type="text"
                 disabled={isLoading}
                 placeholder="Enter title here..."
-                className={`w-full max-w-md px-4 py-2 text-[#F8F8F2] bg-[#1E1E2E] border border-[#44475A] rounded-md focus:outline-none focus:ring-2 focus:ring-[#50FA7B] transition duration-200 ${isLoading && "opacity-50 cursor-not-allowed"}`}
+                className={`w-full max-w-md px-4 py-2 text-[#F8F8F2] bg-[#1E1E2E] border border-[#44475A] rounded-md focus:outline-none focus:ring-2 focus:ring-[#212121] transition duration-200 ${isLoading && "opacity-50 cursor-not-allowed"}`}
                 required
                 onChange={(e) => setTitle(e.target.value)}
                 onKeyUp={(e) => handleKeyPress(e)}
