@@ -1,0 +1,95 @@
+/* Dark Mode Editor */
+.custom-dark-editor .ql-toolbar {
+    background-color: #2f2f2f;
+    border: 1px solid #1d1e27;
+    color: #f8f8f2;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.custom-dark-editor .ql-toolbar button {
+    color: #ecedf3;
+}
+
+.custom-dark-editor .ql-toolbar button:hover {
+    background-color: #424242;
+    border-radius: 4px;
+}
+.custom-dark-editor .ql-toolbar button:active {
+    background-color: #444444;
+}
+
+.custom-dark-editor .ql-toolbar .ql-formats .ql-active {
+    background-color: #424242;
+    border-radius: 4px;
+}
+
+.custom-dark-editor .ql-container {
+    background-color: rgb(13, 13, 13);
+    color: #f8f8f2;
+    border: 1px solid #44475a;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.custom-dark-editor .ql-container p {
+    color: #f8f8f2;
+}
+
+.custom-dark-editor .ql-container .ql-editor {
+    color: #f8f8f2;
+}
+
+.custom-dark-editor .ql-container .ql-editor a {
+    color: #8be9fd;
+    text-decoration: underline;
+}
+
+.custom-dark-editor .ql-container .ql-editor a:hover {
+    color: #50fa7b;
+}
+
+.custom-dark-editor .ql-picker {
+    color: #f8f8f2;
+}
+
+.custom-dark-editor .ql-picker-options {
+    background-color: #1e1e2e;
+    border: 1px solid #44475a;
+}
+
+.custom-dark-editor .ql-picker-item:hover {
+    background-color: #44475a;
+    color: #424242;
+}
+
+.ql-stroke {
+    stroke: #f8f8f2 !important;
+}
+
+.ql-active > .ql-stroke {
+    stroke: #4330da !important;
+    background-color: #424242 !important;
+}
+
+.ql-fill {
+    fill: #f8f8f2 !important;
+}
+
+/* Scrollbar Styling */
+.custom-dark-editor .ql-container.ql-editor::-webkit-scrollbar {
+    width: 8px;
+}
+
+.custom-dark-editor .ql-container.ql-editor::-webkit-scrollbar-thumb {
+    background: #6272a4;
+    border-radius: 4px;
+}
+
+.custom-dark-editor .ql-container.ql-editor::-webkit-scrollbar-thumb:hover {
+    background: #44475a;
+}
+
+.custom-dark-editor .ql-container.ql-editor::-webkit-scrollbar-track {
+    background: #1e1e2e;
+}
