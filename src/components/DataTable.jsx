@@ -15,7 +15,8 @@ function DataTable({ data }) {
                 (data = {
                     documentId: id,
                     title: newTitle,
-                })
+                }),
+                { withCredentials: true }
             )
             .then((res) => {
                 window.location.reload();
@@ -27,7 +28,7 @@ function DataTable({ data }) {
         await axios
             .delete("http://localhost:5000/api/v1/document/delete", {
                 data: { documentId: id },
-            })
+            }, {withCredentials : true})
             .then((res) => {
                 window.location.reload();
             })
@@ -84,7 +85,12 @@ function DataTable({ data }) {
                                         className="w-full max-w-md px-2 py-1 text-[#F8F8F2] bg-[#1E1E2E] border border-[#44475A] rounded-md focus:outline-none focus:ring-2 focus:ring-[#212121] transition duration-200 placeholder:text-sm"
                                     />
                                 ) : (
-                                    row.title
+                                    <a
+                                        href={`/document/${row._id}`}
+                                        className="text-[#F8F8F2] hover:underline"
+                                    >
+                                        {row.title}
+                                    </a>
                                 )}
                             </td>
                             <td className="px-4 py-2 border-t border-[#44475A] space-x-2">

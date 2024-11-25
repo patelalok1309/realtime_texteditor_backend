@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import useAuth from "../Hooks/useAuth"
 
 function DocumentForm() {
     const [title, setTitle] = useState("");
@@ -19,7 +20,8 @@ function DocumentForm() {
             try {
                 const res = await axios.post(
                     "http://localhost:5000/api/v1/document/create",
-                    { title }
+                    { title },
+                    {withCredentials: true}
                 );
 
                 setIsLoading(false);

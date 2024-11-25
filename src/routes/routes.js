@@ -1,21 +1,32 @@
 import { createBrowserRouter } from "react-router-dom";
-import TextEditor from "../screens/TextEditor/TextEditor.jsx";
+import TextEditor from "../screens/TextEditor";
 
 import App from "../App.js";
+import AuthForm from "../screens/Auth";
+import ProtectedRoute from "../components/ProtectedRoute.jsx";
 
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <App />,
+        element: <ProtectedRoute component={App} />,
+    },
+    {
+        path: "/login",
+        element: <AuthForm />,
     },
     {
         path: "/document/:id",
-        element: <TextEditor />,
+        element: <ProtectedRoute component={TextEditor} />,
     },
-]);
-
-// const isAuthenticated = () => {
-//     const token = 
-// }
+], {
+    future: {
+        v7_startTransition : true,
+        v7_relativeSplatPath: true,
+        v7_fetcherPersist: true,
+        v7_normalizeFormMethod: true,
+        v7_partialHydration: true,
+        v7_skipActionErrorRevalidation: true,
+      },
+});
 
 export default router;
