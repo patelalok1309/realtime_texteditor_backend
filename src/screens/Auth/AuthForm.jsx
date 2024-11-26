@@ -1,10 +1,10 @@
-import axios from "axios";
 import React, { useCallback, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Input from "../../components/Input";
 import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+
+import Input from "../../components/Input";
 import { AuthContext } from "../../contexts/AuthContext";
+import { showErrorToast, showToastSuccess } from "../../utils/alerts";
 
 function AuthForm() {
     const [variant, setVariant] = useState("LOGIN");
@@ -39,10 +39,16 @@ function AuthForm() {
                 try {
                     const result = await login(formData);
                     if (result?.success) {
-                        console.log("result", result);
-                        navigate("/");
+                        showToastSuccess(result?.message);
+                        setTimeout(() => {
+                            navigate("/");
+                        }, 1500);
+                    } else {
+                        console.log("result?.message error", result?.message);
+                        showErrorToast(result?.message);
                     }
                 } catch (error) {
+                    showErrorToast(error?.response?.data?.message);
                     console.log(error);
                 } finally {
                     setIsLoading(false);
@@ -54,9 +60,13 @@ function AuthForm() {
                     const result = await register(formData);
                     if (result?.success) {
                         setVariant("LOGIN");
+                        showToastSuccess(result?.message + " Please login");
+                    } else {
+                        showErrorToast(result?.message);
                     }
                 } catch (error) {
                     console.log(error);
+                    showErrorToast(error?.response?.data?.message);
                 } finally {
                     setIsLoading(false);
                 }

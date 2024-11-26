@@ -51,8 +51,8 @@ export const AuthProvider = ({ children }) => {
             setIsAuthenticated(true);
             return response?.data;
         } catch (error) {
-            console.log("failed to login ", error);
             setIsAuthenticated(false);
+            return error?.response?.data;
         } finally {
             setIsLoading(false);
         }
@@ -67,6 +67,7 @@ export const AuthProvider = ({ children }) => {
             setIsAuthenticated(false);
         } catch (error) {
             console.log("failed to logout ", error);
+            return error?.response?.data;
         } finally {
             setIsLoading(false);
         }
@@ -86,6 +87,7 @@ export const AuthProvider = ({ children }) => {
         } catch (error) {
             console.log("failed to register ", error);
             setIsAuthenticated(false);
+            return error?.response?.data;
         } finally {
             setIsLoading(false);
         }

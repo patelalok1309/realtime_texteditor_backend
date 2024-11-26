@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import useAuth from "../Hooks/useAuth"
+import { showToastSuccess } from "../utils/alerts";
 
 function DocumentForm() {
     const [title, setTitle] = useState("");
@@ -15,17 +15,18 @@ function DocumentForm() {
             if (title.trim() === "" || title === undefined || title === null) {
                 return alert("Title is required");
             }
-
             setIsLoading(true);
             try {
                 const res = await axios.post(
                     "http://localhost:5000/api/v1/document/create",
                     { title },
-                    {withCredentials: true}
+                    { withCredentials: true }
                 );
 
-                setIsLoading(false);
-                navigate(`/document/${res.data.document._id}`);
+                showToastSuccess("Document created successfully");
+                setTimeout(() => {
+                    navigate(`/document/${res.data.document._id}`);
+                }, 1000);
             } catch (error) {
                 console.log(error);
             } finally {
@@ -47,7 +48,9 @@ function DocumentForm() {
                 type="text"
                 disabled={isLoading}
                 placeholder="Enter title here..."
-                className={`w-full max-w-md px-4 py-2 text-[#F8F8F2] bg-[#1E1E2E] border border-[#44475A] rounded-md focus:outline-none focus:ring-2 focus:ring-[#212121] transition duration-200 ${isLoading && "opacity-50 cursor-not-allowed"}`}
+                className={`w-full max-w-md px-4 py-2 text-[#F8F8F2] bg-[#1E1E2E] border border-[#44475A] rounded-md focus:outline-none focus:ring-2 focus:ring-[#212121] transition duration-200 ${
+                    isLoading && "opacity-50 cursor-not-allowed"
+                }`}
                 required
                 onChange={(e) => setTitle(e.target.value)}
                 onKeyUp={(e) => handleKeyPress(e)}

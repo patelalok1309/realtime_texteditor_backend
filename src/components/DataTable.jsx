@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { showToastSuccess } from "../utils/alerts";
 
 function DataTable({ data }) {
     const [editingId, setEditingId] = useState(null);
@@ -9,28 +10,29 @@ function DataTable({ data }) {
     const navigate = useNavigate();
 
     const handleRename = async (id) => {
-        await axios
-            .patch(
+        try {
+            await axios.patch(
                 "http://localhost:5000/api/v1/document/rename",
-                (data = {
-                    documentId: id,
-                    title: newTitle,
-                }),
+                { documentId: id, title: newTitle },
                 { withCredentials: true }
-            )
-            .then((res) => {
-                window.location.reload();
-            })
-            .catch((err) => console.log(err));
+            );
+            window.location.reload();
+            showToastSuccess("Document renamed successfully");
+        } catch (err) {
+            console.log(err);
+            showToastSuccess("Something went wrong");
+        }
     };
 
     const handleDelete = async (id) => {
         await axios
             .delete("http://localhost:5000/api/v1/document/delete", {
                 data: { documentId: id },
-            }, {withCredentials : true})
+                withCredentials: true,
+            })
             .then((res) => {
                 window.location.reload();
+                showToastSuccess("Document deleted successfully");
             })
             .catch((err) => console.log(err));
     };

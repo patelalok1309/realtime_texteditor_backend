@@ -93,3 +93,9 @@
 .custom-dark-editor .ql-container.ql-editor::-webkit-scrollbar-track {
     background: #1e1e2e;
 }
+
+.custom-dark-editor  .ql-toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
